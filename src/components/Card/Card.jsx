@@ -7,7 +7,7 @@ export const Card = ({ data }) => {
 
   return (
     <Link to={`/info/${id}`}>
-      <div className='wrapper-img'>
+      <div>
         <span>{name}</span>
         <img src={image} alt={name}/>
       </div>

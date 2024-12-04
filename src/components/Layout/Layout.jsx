@@ -4,14 +4,20 @@ import { Outlet } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 
+import {
+    WrapperBlockSt,
+    WrapperBlockHeaderSt,
+    WrapperBlockMainSt,
+    WrapperBlockFooterSt
+} from './Layout.style.js';
+
 const Layout = () => {
     return (
-        <div>
-            <header><Header /></header>
-            <main><Outlet /></main>
-            <footer><Footer /></footer>
-            
-        </div>
+        <WrapperBlockSt>
+            <WrapperBlockHeaderSt><Header /></WrapperBlockHeaderSt>
+            <WrapperBlockMainSt><Outlet /></WrapperBlockMainSt>
+            <WrapperBlockFooterSt><Footer /></WrapperBlockFooterSt>
+        </WrapperBlockSt>
     )
 }
 
