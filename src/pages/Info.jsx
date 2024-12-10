@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { useCtx } from '../context/context';
 import { Card } from '../components/Card/Card';
 
@@ -11,23 +11,41 @@ import {
 } from './style/Info.style.js';
 
 export const Info = () => {
-  const { arr, allCharacters } = useCtx();
-  const { info, results } = arr;
+  const { allCharacters } = useCtx();
 
   const [arrCharacters, setArrCharacters] = useState([]);
-  
+  const [loading, setLoading] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(12);
+
   useEffect(() => {
-    if(allCharacters && allCharacters.length > 0) {
-      if(info.count === allCharacters.length) {
-        setArrCharacters(allCharacters);
-      }
+    if (allCharacters && allCharacters.length > 0) {
+      setArrCharacters(allCharacters.slice(0, visibleCount));
     }
-  }, [allCharacters]);
+  }, [allCharacters, visibleCount]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight && !loading) {
+        loadMoreCharacters();
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [loading]);
+
+  const loadMoreCharacters = useCallback(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setVisibleCount(prevCount => Math.min(prevCount + 8, allCharacters.length));
+      setLoading(false);
+    }, 2000);
+  }, [allCharacters.length]);
 
   const unityPropertyes = (arr, prop) => {
-    if(arr && arr.length > 0) {
+    if (arr && arr.length > 0) {
       const array = [...new Set(arr.map(el => el[prop]))];
-
       return <> { array?.length > 0 && array.map((el, i) => <div key={i}>{el}</div>) } </>
     }
   }
@@ -43,9 +61,10 @@ export const Info = () => {
       <WrapperSpeciesSt>{getSpecies()}</WrapperSpeciesSt>
       <WrapperBlockCardsSt>
         {
-          allCharacters?.length > 0 &&
-          allCharacters?.map(el => <Card data={el} key={el.id}/>)
+          arrCharacters.length > 0 &&
+          arrCharacters.map(el => <Card data={el} key={el.id}/>)
         }
+        {loading && <div>Loading...</div>}
       </WrapperBlockCardsSt>
     </WrapperBlockSt>
   )
