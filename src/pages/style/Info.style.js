@@ -6,6 +6,10 @@ export const WrapperBlockSt = styled.div`
   gap: 10px;
 `
 
+export const WrapperBlockOptionsSt = styled.div`
+  width: 100%
+`
+
 export const WrapperGenderSt = styled.div`
   display: flex;
   justify-content: space-around;
