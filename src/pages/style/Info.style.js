@@ -7,7 +7,10 @@ export const WrapperBlockSt = styled.div`
 `
 
 export const WrapperBlockOptionsSt = styled.div`
-  width: 100%
+  margin: 0 auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
 `
 
 export const WrapperGenderSt = styled.div`

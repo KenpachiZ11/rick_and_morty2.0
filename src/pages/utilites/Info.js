@@ -1,6 +1,6 @@
-  // ['Male', 'Female'] - ["Мужчина", "Женщина"]
+  // ['Male', 'Female', 'unknown', 'Genderless'] 'uniqFieldGender' - ["Мужчина", "Женщина"]
   // ['Alive', 'unknown', 'Dead'] - ["Живой", "Неизвестный", "Мертвый"]
-  // ['Human', 'Alien'] - ["Человек", "Инопланетянин"]
+  // ['Human', 'Alien', 'Humanoid', 'unknown', 'Poopybutthole', 'Mythological Creature', 'Animal', 'Robot', 'Cronenberg', 'Disease'] - ["Человек", "Инопланетянин"]
 
   export const objectGender = {
     'Male': 'Мужчина',
