@@ -8,8 +8,6 @@ import {
 } from './Cards.style';
 
 export const Card = ({ data }) => {
-  // console.log(data, 'data');
-  // console.log(data, 'mock')
   return (
     <WrapperCardSt>
       <img src={data.image} alt={data.name} />

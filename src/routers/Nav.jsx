@@ -8,14 +8,14 @@ const Nav = () => {
         <nav>
             <ul>
                 <li>
-                    <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/'>Главная</NavLink>
                 </li>
                 <li>
+                    <NavLink to='/heroes'>Герои</NavLink>
+                </li>
+                {/* <li>
                     <NavLink to='/about'>About</NavLink>
-                </li>
-                <li>
-                    <NavLink to='/info'>Info</NavLink>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )

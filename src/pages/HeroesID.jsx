@@ -4,7 +4,7 @@ import { useCtx } from '../context/context';
 // import generatePDF, { Resolution, Margin } from 'react-to-pdf';
 // import generatePDF from 'react-to-pdf';
 
-export const InfoId = () => {
+export const HeroesID = () => {
   const { id } = useParams();
   const { allCharacters } = useCtx();
   // const targetRef = useRef(null);
